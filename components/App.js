@@ -1,8 +1,7 @@
-/* jshint esnext:true */
-
 import React from 'react';
 import {render} from 'react-dom';
 import $ from 'jquery';
+import Bgroup from './ButtGroup';
 import Events from './events';
 
 class App extends React.Component {
@@ -14,7 +13,7 @@ class App extends React.Component {
 
   getData(){
     var self = this;
-    $.get('http://localhost:3000/data', function(data){
+    $.get('/data', function(data){
       self.setState({data: data});
     });
   }
@@ -25,12 +24,20 @@ class App extends React.Component {
 
   render(){
     return(
-      <div>
-      App
-        <Events info={this.state.data}/>
+      <div id="container">
+      <div id="bg">
+        <img src="https://static.pexels.com/photos/2537/sign-los-angeles-typography-usa.jpg" alt="mailbu pier and fishing sign" />
+      </div>
+        <h1>
+          It's happening
+        </h1>
+        <h2>
+          ...right now
+        </h2>
+        <Bgroup/>
       </div>
     );
   }
 }
 
-render(<App/>, document.getElementById('contents'));
+render(<App/>, document.getElementById('content'));

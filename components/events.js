@@ -1,4 +1,3 @@
-/*jshint esnext:true*/
 import React from 'react';
 
 class Events extends React.Component{
@@ -18,7 +17,6 @@ class Events extends React.Component{
     });
     return(
       <div>
-        <h1>Testing, one two</h1>
         {divArr}
       </div>
     );

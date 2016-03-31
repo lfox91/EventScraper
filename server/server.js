@@ -1,41 +1,20 @@
-var express = require('express');
+var express = require ('express');
 var app = express();
+var bodyParser = require('body-parser');
 var path = require('path');
-var rp = require('request-promise');
-var mongoose = require('mongoose');
-var cheerio = require('cheerio');
-var Scraper = require('./scraper');
-var Store = require('./store');
+var eventController = require('./controllers/eventController');
+var store = require('./controllers/store');
 
-var run1 = false;
-firstRun();
-function firstRun(){
-  run1 = true;
-  Scraper.scraper();
-}
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname,'./../public')));
 
-if (run1) {
-  setInterval(function () {
-    mongoose.connection.collections.events.drop(function (err) {
-      console.log('collection dropped');
-    });
-    console.log("I ran on" + Date.now());
-    Scraper.scraper();
-  }, 60000);
-}
-
-app.get('/data', Store.find, function(req, res){
-    res.send(res.data);
-});
 app.get('/', function(req, res){
-  res.sendFile(path.resolve('./index.html'));
+  res.sendFile(path.join(__dirname,'/../public/index.html'));
 });
-app.get('/build/bundle.js', function(req, res){
-  res.sendFile(path.resolve('./build/bundle.js'));
-});
-app.get('/css/style.css', function(req,res){
-  res.sendFile(path.resolve('./css/style.css'));
-});
-app.listen(3000 , function () {
-  console.log('eventscraper running on port 3000!');
+// , store.modelName
+app.get('/data', eventController.getData, eventController.displayE_b);
+
+
+app.listen(3000, function(){
+  console.log('Connected to port 3000');
 });

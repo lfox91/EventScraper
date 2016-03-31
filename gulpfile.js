@@ -30,10 +30,9 @@ function buildScript(file, watch) {
 
   function rebundle(){
     var stream = bundler.bundle();
-    return stream
-      .on('error', handleErrors)
-      .pipe(source('bundle.js'))
-      .pipe(gulp.dest('./build/'));
+    stream = stream.pipe(source('bundle.js'));
+    stream = stream.pipe(gulp.dest('./public/build/'));
+    return stream;
   }
 
   bundler.on('update', function() {
@@ -51,7 +50,7 @@ gulp.task('scripts', function() {
   return buildScript('App.js', false);
 });
 
-//run nodemon
+// run nodemon
 gulp.task('start', function() {
   nodemon({
     script: 'server/server.js',

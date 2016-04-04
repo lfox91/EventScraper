@@ -1,0 +1,19 @@
+{
+  "name": "parse-test",
+  "description": "quick parse test",
+  "main": "wordAnalyzer.js",
+  "authors": [
+    "LSF"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lfox91/EventScraper",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

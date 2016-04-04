@@ -1,0 +1,21 @@
+{
+  "name": "parse-test",
+  "version": "1.0.0",
+  "description": "quick parse test",
+  "main": "wordAnalyzer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify -t [ babelify --presets [ es2015 ] ] wordAnalyzer.js  > bundle.js",
+    "watch": "watchify -t [ babelify --presets [ es2015 ] ] *.js -o bundle.js -dv"
+  },
+  "author": "LSF",
+  "license": "ISC",
+  "dependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "express": "^4.13.4",
+    "request": "^2.69.0",
+    "watchify": "^3.7.0",
+    "word-frequency-analyzer": "0.0.1"
+  }
+}

@@ -2,7 +2,7 @@ var express = require ('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
-var eventController = require('./controllers/eventController');
+var eventController = require('./controllers/EventBrite_Controller');
 var store = require('./controllers/store');
 
 app.use(bodyParser.urlencoded({extended:false}));

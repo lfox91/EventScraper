@@ -23,16 +23,16 @@ var store = {
 
   modelArr: [],
   newModel: function (req, res, next) {
-    for (var events of req.e_b) {
-      modelName = "e_b" + k;
+    for (var events of req.eventBrite) {
+      modelName = "eventBrite_" + events;
       store.modelArr.push(
         modelName = new Event({
-          eventLink: req.e_b[k].eventName.href,
-          eventName: req.e_b[k].name.text,
-          eventDescription: req.e_b[k].description.text,
-          eventDate: req.e_b[k].eventDate,
-          eventLocation: req.e_b[k].eventLocation,
-          siteURL: req.e_b[k].url
+          // eventLink: events.eventName.href,
+          eventName: events.name.text,
+          eventDescription: events.description.text,
+          // eventDate: events.eventDate,
+          eventLocation: req.eBVenues[events.venue_id],
+          siteURL: events.url
         })
       );
     }

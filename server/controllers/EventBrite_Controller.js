@@ -35,7 +35,6 @@ module.exports = {
     );
 
     function getEbData(callback) {
-      console.log(1)
       let earl = `http://eventbriteapi.com/v3/events/search?token=${eBToken}&popular=false&venue.city=los angeles&start_date.range_start=${now.slice(0, tomorrow.indexOf('.'))}&start_date.range_end=${tomorrow.slice(0, tomorrow.indexOf('.'))}`;
 
       request(earl, function(err, data) {
@@ -46,7 +45,6 @@ module.exports = {
     }
 
     function makeVenueArr(eventsArr, callback) {
-      console.log(2);
       let venueFuncs = [];
       req.eventBrite.venues = [];
       eventsArr.forEach(el=>{
@@ -71,12 +69,10 @@ module.exports = {
     }
 
     function getVenueObjs(venueFuncs, callback) {
-      console.log(3);
       async.series(venueFuncs, function(err, success){
         if (err){
           callback(err);
         } else {
-          console.log('series finished');
           callback(null, 'finished');
         }
       });
@@ -84,7 +80,6 @@ module.exports = {
   },
   //purely for testing purposes
   displayE_b: function(req, res){
-    console.log(req.eventBrite.venues);
     res.send(req.eventBrite.venues);
   }
 };

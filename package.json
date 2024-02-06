@@ -41,7 +41,7 @@
     "path": "^0.12.7",
     "react-bootstrap": "^0.28.2",
     "request": "^2.67.0",
-    "request-promise": "^1.0.2",
+    "request-promise": "^4.2.6",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
